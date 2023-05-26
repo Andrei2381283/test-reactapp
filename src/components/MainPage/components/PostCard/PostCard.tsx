@@ -26,7 +26,7 @@ export default function PostCard({ post }: { post: Post }) {
 
   return <>
     <div className="mt-3 p-3 d-flex rounded border">
-      {photo ? <Link to={`/user/${post.userId}`}><img src={photo?.thumbnailUrl} className="rounded" /></Link>: <Loading size="150" />}
+      {photo ? <Link to={`/user/${post.userId}`}><img src={photo?.thumbnailUrl} className="rounded" /></Link> : <Loading size="150" />}
       <div className="d-flex flex-column ms-3">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
@@ -37,7 +37,7 @@ export default function PostCard({ post }: { post: Post }) {
         <Accordion.Header>Комментарии</Accordion.Header>
         <Accordion.Body className="d-flex flex-column">
           {comments.length ? comments.map(comment => 
-            <div className="border-top py-2">
+            <div key={comment.id} className="border-top py-2">
               <h5 className="mb-0">{comment.email}</h5>
               <span>{comment.body}</span>
             </div>
