@@ -1,4 +1,4 @@
 import axios from "axios";
-import { Post } from "../types";
+import { IFetchParams, Post } from "../types";
 
-export const getPosts = () => axios.get<Post[]>("/posts");
+export const getPosts = (params: IFetchParams) => axios.get<Post[]>("/posts", { params });

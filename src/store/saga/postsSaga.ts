@@ -3,11 +3,11 @@ import { AxiosResponse } from "axios";
 import { getPosts } from "../../services/posts"
 import { setPosts } from "../actions/postsActions"
 import { FETCH_POSTS } from "../../types/postsTypes";
-import { Post } from "../../types"
+import { IFetchParams, Post } from "../../types"
 
-function* fetchPostsWorker() {
+function* fetchPostsWorker({ payload }: { payload: IFetchParams, type: string }) {
     try {
-        const res: AxiosResponse<Post[], any> = yield call(getPosts);
+        const res: AxiosResponse<Post[], any> = yield call(getPosts, payload);
         yield put(setPosts(res.data));
     } catch (err) {
         console.error(err);

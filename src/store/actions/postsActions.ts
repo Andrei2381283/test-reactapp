@@ -1,11 +1,19 @@
 import { Post } from "../../types";
-import { FETCH_POSTS, SET_POSTS } from "../../types/postsTypes";
+import { CLEAR_POSTS, FETCH_POSTS, SET_POSTS } from "../../types/postsTypes";
 
-export const setPosts = (payload: Array<Post>) => ({
+export const setPosts = (payload: Post[]) => ({
     type: SET_POSTS,
     payload
 });
 
-export const fetchPosts = () => ({
-    type: FETCH_POSTS
+export const fetchPosts = (page: number) => ({
+    type: FETCH_POSTS,
+    payload: {
+        _start: Number(process.env.REACT_APP_PAGE_SIZE)*page,
+        _limit: Number(process.env.REACT_APP_PAGE_SIZE)
+    }
+});
+
+export const clearPosts = () => ({
+    type: CLEAR_POSTS
 });

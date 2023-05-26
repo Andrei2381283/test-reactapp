@@ -12,3 +12,8 @@ export interface IPostsReducer {
 export interface IState {
     postsReducer: IPostsReducer
 }
+
+export interface IFetchParams {
+    _start: number | string,
+    _limit: number | string
+}
