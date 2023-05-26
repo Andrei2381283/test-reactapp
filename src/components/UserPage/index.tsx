@@ -52,7 +52,6 @@ export default function UserPage() {
   }, [photo]);
 
   useEffect(() => {
-    console.log(user);
     if (user.id < 0) getUser(id).then(res => setUser(res.data));
   }, [user]);
 
