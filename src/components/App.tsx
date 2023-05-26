@@ -4,6 +4,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import MainPage from './MainPage';
 import AboutMePage from './AboutMePage';
 import Header from './Header';
+import UserPage from './UserPage';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage/>} />
         <Route path='/about-me' element={<AboutMePage/>} />
+        <Route path='/user/:userId' element={<UserPage/>} />
       </Routes>
     </>
   );
