@@ -7,25 +7,26 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import PostCard from "./components/PostCard/PostCard";
 import { Pagination } from "react-bootstrap";
 
+const maxPosts = Number(process.env.REACT_APP_PAGE_SIZE);
 
 export default function MainPage() {
 
   let [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
+
   const dispatch = useDispatch();
-  const posts = useSelector((state: IState) => state.postsReducer.posts);
+  const allPosts = useSelector((state: IState) => state.postsReducer.posts);
 
   const page = Number(searchParams.get("page") || 0);
 
+  const posts = allPosts.slice(maxPosts*page, maxPosts*page + maxPosts);
+
   useEffect(() => {
-    console.log('Location changed');
-    console.log(location, page);
-    dispatch(fetchPosts(page));
-  }, [location]);
+    if(!allPosts.length) dispatch(fetchPosts());
+  }, [allPosts]);
 
   const pagItems = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < allPosts.length/maxPosts; i++) {
     pagItems.push(
       <Pagination.Item onClick={() => setSearchParams(i ? `page=${i}` : "")} key={i} active={i === page}>
         {i + 1}

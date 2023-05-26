@@ -7,8 +7,7 @@ import { IPostsFetchParams, Post } from "../../types"
 
 function* fetchPostsWorker({ payload }: { payload: IPostsFetchParams, type: string }) {
   try {
-    yield put(setPosts([]));
-    const res: AxiosResponse<Post[], any> = yield call(getPosts, payload);
+    const res: AxiosResponse<Post[], any> = yield call(getPosts);
     yield put(setPosts(res.data));
   } catch (err) {
     console.error(err);
