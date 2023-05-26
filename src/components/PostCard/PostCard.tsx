@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Comment, IState, Post } from "../../../../types";
+import { Comment, IState, Post } from "../../types";
 import { useEffect, useState } from "react";
-import { fetchPhoto } from "../../../../store/actions/photosActions";
-import Loading from "../../../Loading/Loading";
+import { fetchPhoto } from "../../store/actions/photosActions";
+import Loading from "../Loading/Loading";
 import { Accordion } from "react-bootstrap";
-import { getCommentsFor } from "../../../../services/comments";
+import { getCommentsFor } from "../../services/comments";
 import { Link } from "react-router-dom";
 
 export default function PostCard({ post }: { post: Post }) {
@@ -25,9 +25,9 @@ export default function PostCard({ post }: { post: Post }) {
   }
 
   return <>
-    <div className="mt-3 p-3 d-flex rounded border">
-      {photo ? <Link to={`/user/${post.userId}`}><img src={photo?.thumbnailUrl} className="rounded" /></Link> : <Loading size="150" />}
-      <div className="d-flex flex-column ms-3">
+    <div className="mt-3 p-3 d-flex flex-column flex-md-row rounded border">
+      {photo ? <Link to={`/user/${post.userId}`} className="align-self-center align-self-md-start"><img src={photo?.thumbnailUrl} className="rounded" /></Link> : <Loading size="150" />}
+      <div className="d-flex flex-column ms-3 mt-3 mt-md-0">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
       </div>
