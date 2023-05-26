@@ -28,8 +28,8 @@ export default function Header() {
 			<Offcanvas.Body>
 				<nav>
 					<ul className="list-unstyled m-0">
-						<li><Link className="text-black fs-5" to="/">Список постов</Link></li>
-						<li className="mt-2"><Link className="text-black fs-5" to="/about-me">Обо мне</Link></li>
+						<li><Link className="text-black fs-5" to="/" onClick={handleClose}>Список постов</Link></li>
+						<li className="mt-2"><Link className="text-black fs-5" to="/about-me" onClick={handleClose}>Обо мне</Link></li>
 					</ul>
 				</nav>
 			</Offcanvas.Body>
