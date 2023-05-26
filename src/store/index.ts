@@ -6,9 +6,9 @@ import rootReducer from "./reducers";
 const sagaMiddleware = createSagaMiddleware()
 
 export const store = configureStore({
-    devTools: process.env.NODE_ENV != "production",
-    reducer: rootReducer, 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware)
+  devTools: process.env.NODE_ENV != "production",
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware)
 })
 
 sagaMiddleware.run(rootWatcher)

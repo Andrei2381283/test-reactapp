@@ -3,15 +3,13 @@ import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import MainPage from './MainPage';
 import AboutMePage from './AboutMePage';
+import Header from './Header';
 
 function App() {
 
   return (
     <>
-      <header>
-        <Link to="/">Main</Link>
-        <Link to="/about-me">About me</Link>
-      </header>
+      <Header/>
       <Routes>
         <Route path='/' element={<MainPage/>} />
         <Route path='/about-me' element={<AboutMePage/>} />

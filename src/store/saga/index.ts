@@ -1,6 +1,7 @@
-import {all} from "redux-saga/effects"
+import { all } from "redux-saga/effects"
 import { postsWatcher } from "./postsSaga"
+import { photosWatcher } from "./photosSaga"
 
 export function* rootWatcher() {
-    yield all([postsWatcher()])
+  yield all([postsWatcher(), photosWatcher()])
 }
